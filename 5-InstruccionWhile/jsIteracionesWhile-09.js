@@ -1,21 +1,36 @@
-/*
+/*NAHUEL PAZOS DIV Z
+EJERCICIO 09 WHILE
 Al presionar el botón pedir  números  hasta que el usuario quiera,
 mostrar el número máximo y el número mínimo ingresado.*/
 function mostrar()
-{	// declarar variables
-	var banderaDelPrimero;
-	var numeroIngresado;
-	var numeroMaximo;
-	var numeroMinimo;
-	var respuesta;
-	//iniciar variables
-	banderaDelPrimero="es el primero";
-	respuesta='si';
-	while(respuesta=="si")
+{	
+	let numeroIngresado;
+	let numeroMaximo;
+ 	let numeroMinimo;
+	let respuesta;
+	let banderaDelPrimerIngreso;
+
+	banderaDelPrimerIngreso = 0;
+	numeroMaximo = -100000;
+	numeroMinimo = 100000;
+	respuesta = true;
+
+	while(respuesta == true)
 	{
-		
-		respuesta=prompt("desea continuar?");
+		numeroIngresado = prompt("Ingrese un numero:");
+		numeroIngresado = parseInt(numeroIngresado);
+
+		if(numeroIngresado < numeroMinimo || banderaDelPrimerIngreso == 0)
+		{
+			numeroMinimo = numeroIngresado;
+		}
+		if( numeroIngresado > numeroMaximo || banderaDelPrimerIngreso == 0)
+		{
+			numeroMaximo = numeroIngresado;
+			banderaDelPrimerIngreso = 1;
+		}
+		respuesta = confirm("Desea continuar?");
 	}
-	txtIdMaximo.value=numeroMaximo;
-	txtIdMinimmo.value=numeroMinimo;
-}//FIN DE LA FUNCIÓN
+	document.getElementById("txtIdMaximo").value = numeroMaximo;
+	document.getElementById("txtIdMinimo").value = numeroMinimo;
+}
